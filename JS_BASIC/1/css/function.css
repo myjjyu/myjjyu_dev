@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.alert-box {
+  background-color: rgb(242, 242, 110);
+  width: 200px;
+  height: 100px; /* 높이는 유지 */
+  font-size: 15px;
+  color: rgb(0, 106, 255);
+  margin-bottom: 15px;
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 세로 방향 정렬 */
+  align-items: center; /* 가로 방향 중앙 정렬 */
+  justify-content: center; /* 세로 방향 중앙 정렬 */
+  padding: 10px; /* 여백 추가 */
+  text-align: center;
+}
+
+.message {
+  margin: 0; /* 기본 여백 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+}
+
+button {
+  margin-top: 10px; /* 버튼 간격을 위해 여백 추가 */
+  
+}
