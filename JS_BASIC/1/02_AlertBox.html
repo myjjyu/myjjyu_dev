@@ -8,12 +8,11 @@
 </head>
 <body>
 <!-- 열기버튼 -->
-<div class="alert-box" id="alert">Hello~Javascript Alert box!!</div>
+<div class="alert-box" id="alert">Hello~Javascript Alert box!!
+  <!-- 닫기버튼 -->
+  <button class="closebutton" onclick="document.querySelector('#alert').style.display='none'">❎</button>
+</div>
 
-<!-- 닫기버튼 -->
-<div class="alert-box" id="close"></div>
- 
-<button onclick="document.getElementById('alert').style.display='block'">Click</button>
-<button onclick="document.getElementById('alert').style.display='none'">Close</button>
+<button class="clickbutton" onclick="document.getElementById('alert').style.display='block'">Click</button>
 </body>
 </html>

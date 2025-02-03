@@ -4,6 +4,22 @@
   color: white;
   border-radius: 5px;
   display: none;
+  font-weight: bold;
 }
 
+.clickbutton{
+  cursor: pointer;
+  background: rgb(231, 105, 105);
+  border: none;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 10px;
+}
 
+.closebutton{
+  float: right;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
