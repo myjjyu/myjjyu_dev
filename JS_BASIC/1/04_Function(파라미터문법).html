@@ -9,22 +9,18 @@
 <body>
 <!-- 열기버튼 -->
 <div class="alert-box" id="alert">Hello~Javascript Alert box!!
-  <button class="closebutton" onclick="closeAlert()">❎</button>
+  <button class="closebutton" onclick="alertButton('none')">❎</button>
 </div>
 
-<button class="clickbutton" onclick="clickAlert()">Click</button>
+<!-- 닫기버튼 -->
+<button class="clickbutton" onclick="alertButton('block')">Click</button>
 
 <script>
-
-  // alert 열기
-  function clickAlert() {
-    document.getElementById('alert').style.display='block';
-  }
-
-  // alert 닫기
-  function closeAlert() {
-    document.getElementById('alert').style.display='none';
+  // displayState를 파라미터(인자)로 받아서 alertBox를 보여주거나 숨겨주는 함수
+  function alertButton(displayState){ 
+    document.getElementById('alert').style.display=displayState;
   }
 </script>
+
 </body>
 </html>
