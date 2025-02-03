@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/02_AlertBox.css" />
+  </head>
+  <body>
+    <!-- alertBox -->
+    <div class="alert-box" id="alert">
+      <p id="title">내용</p>
+      <!-- 닫기버튼 -->
+      <button id="close">닫기</button>
+    </div>
+
+    <button onclick="showAlert('아이디를 입력해주세요')">ID</button>
+    <button onclick="showAlert('비밀번호를 입력해주세요')">P/W</button>
+
+    <script>
+      // ✅ EventListener : id가 어쩌구인 요소를 클릭하면 안의 코드를 실행해주세요~ 라는 뜻
+      document.getElementById("close").addEventListener("click", function () {
+        document.getElementById("alert").style.display = "none";
+      });
+
+      function showAlert(message) {
+        document.getElementById("title").innerHTML = message;
+        document.getElementById("alert").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
