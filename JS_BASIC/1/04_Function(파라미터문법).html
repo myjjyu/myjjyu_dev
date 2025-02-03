@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/02_AlertBox.css">
+</head>
+<body>
+<!-- 열기버튼 -->
+<div class="alert-box" id="alert">Hello~Javascript Alert box!!
+  <button class="closebutton" onclick="closeAlert()">❎</button>
+</div>
+
+<button class="clickbutton" onclick="clickAlert()">Click</button>
+
+<script>
+
+  // alert 열기
+  function clickAlert() {
+    document.getElementById('alert').style.display='block';
+  }
+
+  // alert 닫기
+  function closeAlert() {
+    document.getElementById('alert').style.display='none';
+  }
+</script>
+</body>
+</html>

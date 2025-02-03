@@ -1,15 +1,16 @@
 .alert-box {
-  background-color: skyblue;
+  background-color: rgb(255, 255, 137);
   padding: 20px;
-  color: white;
+  color: rgb(49, 152, 35);
   border-radius: 5px;
   display: none;
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .clickbutton{
   cursor: pointer;
-  background: rgb(231, 105, 105);
+  background: rgb(172, 237, 163);
   border: none;
   padding: 5px;
   font-size: 20px;
