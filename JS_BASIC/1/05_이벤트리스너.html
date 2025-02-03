@@ -19,13 +19,13 @@
 
     <script>
       // ✅ EventListener : id가 어쩌구인 요소를 클릭하면 안의 코드를 실행해주세요~ 라는 뜻
-      document.getElementById("close").addEventListener("click", function () {
-        document.getElementById("alert").style.display = "none";
+      document.querySelector("#close").addEventListener("click", function () {
+        document.querySelector("#alert").style.display = "none";
       });
 
       function showAlert(message) {
-        document.getElementById("title").innerHTML = message;
-        document.getElementById("alert").style.display = "block";
+        document.querySelector("#title").innerHTML = message;
+        document.querySelector("#alert").style.display = "block";
       }
     </script>
   </body>
