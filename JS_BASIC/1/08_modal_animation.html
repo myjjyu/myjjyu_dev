@@ -30,10 +30,15 @@
       <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <p class="hello">hello</p>
-    <p class="hello">hello2</p>
-    <p class="hello">hello3</p>
-    <button id="test-btn">close</button>
+    <!-- login modal -->
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>please login</h4>
+        <button class="btn btn-danger" id="close">Close</button>
+      </div>
+    </div>
+
+    <button id="loginButton">login</button>
 
     <!-- 부트스트랩 라이브러리 -->
     <script
@@ -55,16 +60,21 @@
       });
       // ✅ toggle() 메서드는 클래스가 없으면 추가하고, 있으면 제거한다.
 
-      $('.hello').html('Hello, jQuery!').css({
-        'color': 'green',
-        'font-size': '20px',
-        'font-weight': 'bold'
-      });
+      /**
+       * login 모달창
+       * login click 하면 모달창 띄우기
+       * 
+       */
+      document
+        .querySelector("#loginButton")
+        .addEventListener("click", function () {
+          document.querySelector(".black-bg").classList.add("show");
+        });
 
-      $('#test-btn').on('click', function() {
-        $('.hello').toggleClass('closeShow');
+      // 띄어진 모달창 close누르면 닫기
+      document.querySelector("#close").addEventListener("click", function () {
+        document.querySelector(".black-bg").classList.remove("show");
       });
-
     </script>
   </body>
 </html>

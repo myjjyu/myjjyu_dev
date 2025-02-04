@@ -13,6 +13,23 @@
     <link rel="stylesheet" href="./css/06_서브메뉴_classList다루기.css" />
   </head>
   <body>
+    <!-- login modal -->
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>please login</h4>
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" class="form-control" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
+      </div>
+    </div>
+
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
@@ -30,10 +47,11 @@
       <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <p class="hello">hello</p>
-    <p class="hello">hello2</p>
-    <p class="hello">hello3</p>
-    <button id="test-btn">close</button>
+    <div class="main-bg">
+      <h4>Shirts on Sale</h4>
+      <button id="loginButton" class="btn btn-danger">로그인</button>
+    </div>
+
 
     <!-- 부트스트랩 라이브러리 -->
     <script
@@ -55,14 +73,20 @@
       });
       // ✅ toggle() 메서드는 클래스가 없으면 추가하고, 있으면 제거한다.
 
-      $(".hello").html("Hello, jQuery!").css({
-        color: "green",
-        "font-size": "20px",
-        "font-weight": "bold",
-      });
+      /**
+       * login 모달창
+       * login click 하면 모달창 띄우기
+       *
+       */
+      document
+        .querySelector("#loginButton")
+        .addEventListener("click", function () {
+          document.querySelector(".black-bg").classList.add("show");
+        });
 
-      $("#test-btn").on("click", function () {
-        $(".hello").fadeToggle();
+      // 띄어진 모달창 close누르면 닫기
+      document.querySelector("#close").addEventListener("click", function () {
+        document.querySelector(".black-bg").classList.remove("show");
       });
     </script>
   </body>
