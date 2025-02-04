@@ -19,10 +19,20 @@
         <h4>please login</h4>
         <form action="success.html">
           <div class="my-3">
-            <input type="text" class="form-control" />
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="아이디를 입력하세요"
+            />
           </div>
           <div class="my-3">
-            <input type="password" class="form-control" />
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="비밀번호를 입력하세요"
+            />
           </div>
           <button type="submit" class="btn btn-primary">전송</button>
           <button type="button" class="btn btn-danger" id="close">닫기</button>
@@ -51,7 +61,6 @@
       <h4>Shirts on Sale</h4>
       <button id="loginButton" class="btn btn-danger">로그인</button>
     </div>
-
 
     <!-- 부트스트랩 라이브러리 -->
     <script
@@ -88,6 +97,25 @@
       document.querySelector("#close").addEventListener("click", function () {
         document.querySelector(".black-bg").classList.remove("show");
       });
+
+      // if~else(조건)문
+      document
+        .querySelector(".btn-primary")
+        .addEventListener("click", function (e) {
+          if (document.querySelector("#email").value === "") {
+            alert("아이디를 입력하세요");
+            e.preventDefault();
+          } else if (document.querySelector("#email").value.indexOf("@") === -1) {
+            alert("이메일 형식이 아닙니다.");
+            e.preventDefault();
+          } else if (document.querySelector("#password").value === "") {
+            alert("비밀번호를 입력하세요");
+            e.preventDefault();
+          } else if(document.querySelector("#password").value.length < 6) {
+            alert("비밀번호는 6자리 이상이어야 합니다.");
+            e.preventDefault();
+          }
+        });
     </script>
   </body>
 </html>
