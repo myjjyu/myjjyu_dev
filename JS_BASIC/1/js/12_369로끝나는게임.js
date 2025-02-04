@@ -4,7 +4,7 @@
 
 function game369(number) {
   const lastnumber = number.toString().slice(-1); // 숫자의 마지막 자리 확인
-  if (lastnumber === '3' || lastDigit === '6' || lastDigit === '9') {
+  if (lastnumber === '3' || lastnumber === '6' || lastnumber === '9') {
     console.log('👏🏻');
   } else {
     console.log('통과');
