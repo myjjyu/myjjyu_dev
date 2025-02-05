@@ -1,0 +1,37 @@
+<!--
+ * 📌 간단한 퀴즈 UI를 만들어보기
+ * 유저가 답을 맞추면 alert('성공')
+ * 유저가 답을 3번 찍어서 못맞추면 alert('멍청아') 를 띄워보자
+ * 정답은 1335
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer" />
+    <button id="send-answer">제출</button>
+
+    <script>
+      let count = 0;
+
+      document
+        .querySelector("#send-answer")
+        .addEventListener("click", function () {
+          count++;
+
+          let 유저답안 = document.querySelector("#answer").value;
+          if (유저답안 === "1335") {
+            alert("성공");
+          } else if (count >= 3 && 유저답안 !== "1335") {
+            alert("멍청아");
+          }
+        });
+    </script>
+  </body>
+</html>
