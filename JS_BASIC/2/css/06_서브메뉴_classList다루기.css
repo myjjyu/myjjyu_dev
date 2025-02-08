@@ -1,3 +1,19 @@
+:root{
+  scroll-behavior: auto;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+}
+
+.navbar-brand{
+  font-size: 30px;
+  transform: all 1s;
+}
+
 /* 서브메뉴 기본 스타일: 숨김 상태 */
 .list-group {
   max-height: 0; /* 서브메뉴의 최대 높이를 0으로 설정하여 숨김 */
@@ -36,23 +52,22 @@
   opacity: 1; /* 애니메이션을 위한 끝 스타일 */
 }
 
-.main-bg{
+.main-bg {
   padding: 100px 20px;
   background: lightgray;
 }
 
-.slide-container{
+.slide-container {
   width: 300vw;
   transition: all 1s;
   transform: translateX(-100vw);
 
-
-  .slide-box{
+  .slide-box {
     width: 100vw;
     float: left;
   }
 }
 
-.slide-box img{
+.slide-box img {
   width: 100%;
 }
