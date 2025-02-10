@@ -9,6 +9,25 @@
   top: 0;
 }
 
+.bar {
+  position: fixed; /* 고정 */
+  background-color: orange;
+  height: 5px; /* 진척도 표시 */
+  top: 0px;
+  transition: 0.2s ease-in-out; /* 부드러운 애니메이션 */
+  z-index: 1000; /* 다른 요소들 위에 표시되도록 z-index 추가 */
+}
+
+#progress-bar-container{
+  color: #000;
+}
+#progress-bar{
+  width: 0;
+  height: 5px;
+  background: #000;
+}
+
+
 .navbar-brand{
   font-size: 30px;
   transform: all 1s;
@@ -32,7 +51,7 @@
   height: 100%;
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 5;
+  z-index: 1000000;
   padding: 30px;
   visibility: hidden; /* 애니메이션을 위한 시작 스타일 */
   opacity: 0; /* 애니메이션을 위한 시작 스타일 */
@@ -53,6 +72,7 @@
 }
 
 .main-bg {
+  margin-top: 50px;
   padding: 100px 20px;
   background: lightgray;
 }
@@ -77,3 +97,5 @@
   height: 100px;
   overflow: scroll;
 }
+
+

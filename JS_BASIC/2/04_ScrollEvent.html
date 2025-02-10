@@ -1,4 +1,4 @@
-=-<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -39,6 +39,10 @@
         </form>
       </div>
     </div>
+
+    <!-- 페이지 진척도 바 -->
+    <!-- /* 막대바 */ -->
+    <div class="bar"></div>
 
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
@@ -206,11 +210,32 @@
         let 눈에보이는높이 = document.querySelector(".lorem").clientHeight;
         console.log(스크롤양, 실제높이, 눈에보이는높이);
 
-        if(스크롤양 + 눈에보이는높이 >= 실제높이){
+        if (스크롤양 + 눈에보이는높이 >= 실제높이) {
           alert("끝까지 스크롤했습니다.");
         }
       });
     </script>
 
+    <script>
+      // 페이지 진척도 표시하기
+      window.addEventListener("scroll", function () {
+        // 현재 스크롤 위치를 가져옵니다.
+        const scrollTop = window.scrollY;
+
+        // 전체 스크롤 가능 높이를 계산합니다.
+        // (문서 전체 높이 - 현재 창의 높이)
+        const scrollHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+
+        // 현재 스크롤 위치를 전체 스크롤 가능 높이로 나누어 퍼센트로 변환합니다.
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+
+        // 콘솔에 현재 스크롤 퍼센트를 출력합니다.
+        console.log(scrollPercentage);
+
+        // .bar 요소의 너비를 현재 스크롤 퍼센트로 설정합니다.
+        document.querySelector(".bar").style.width = scrollPercentage + "%";
+      });
+    </script>
   </body>
 </html>
