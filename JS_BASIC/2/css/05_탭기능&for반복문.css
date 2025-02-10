@@ -1,0 +1,38 @@
+ul.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+}
+/* ul.list::after: 탭 목록의 가상 요소 스타일 */
+ul.list::after {
+  content: ''; /* 내용 없음 */
+  display: block; /* 블록 요소로 표시 */
+  clear: both; /* 부동 요소 정리 */
+}
+.tab-button {
+  display: block;
+  padding: 10px 20px 10px 20px;
+  float: left;
+  margin-right: -1px;
+  margin-bottom: -1px;
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* .orange 클래스: 선택된 탭 버튼 스타일 */
+.orange {
+  border-top: 2px solid orange; /* 위쪽 테두리 */
+  border-right: 1px solid #ccc; /* 오른쪽 테두리 */
+  border-bottom: 1px solid white; /* 아래쪽 테두리 */
+  border-left: 1px solid #ccc; /* 왼쪽 테두리 */
+  color: black; /* 글자 색상 */
+  margin-top: -2px; /* 위쪽 여백 */
+}
+.tab-content {
+  display: none;
+  padding: 10px;
+}
+.show {
+  display: block;
+}
