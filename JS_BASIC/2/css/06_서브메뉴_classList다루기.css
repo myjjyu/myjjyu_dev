@@ -71,3 +71,9 @@
 .slide-box img {
   width: 100%;
 }
+
+.lorem{
+  width: 200px;
+  height: 100px;
+  overflow: scroll;
+}

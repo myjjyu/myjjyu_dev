@@ -67,6 +67,12 @@
       <span>5</span>초 이내 구매시 사은품 증정!
     </div>
 
+    <div class="lorem">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, iusto,
+      illum facere numquam, libero culpa dignissimos quaerat beatae vel
+      cupiditate ex esse earum nemo quo similique? Tempora similique et qui.
+    </div>
+
     <div style="height: 1000px"></div>
 
     <!-- 부트스트랩 라이브러리 -->
@@ -173,19 +179,37 @@
           document.querySelector(".alert").style.display = "none";
         }
       }, 1000);
+
+      // lorem 스크롤 이벤트
+      // 박스를 끝까지 스크롤하면 alert()창 띄우기
     </script>
 
     <script>
       // 스크롤 이벤트
       // 스크롤이 될때마다 현재 스크롤 위치값을 출력
       // 100px 이상 스크롤이 되면 텍스트 사이즈 변경
-      window.addEventListener('scroll', function(){
-        if(window.scrollY > 100){
-          document.querySelector('.navbar-brand').style.fontSize = '20px';
-        }else{
-          document.querySelector('.navbar-brand').style.fontSize = '30px';
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 100) {
+          document.querySelector(".navbar-brand").style.fontSize = "20px";
+        } else {
+          document.querySelector(".navbar-brand").style.fontSize = "30px";
         }
-      })
+      });
+    </script>
+
+    <script>
+      // 스크롤 끝까지 내리면 alert()창 띄우기
+      // div의 스크롤바 내린양 + 눈에보이는 div높이 == 실제 div높이
+      document.querySelector(".lorem").addEventListener("scroll", function () {
+        let 스크롤양 = document.querySelector(".lorem").scrollTop;
+        let 실제높이 = document.querySelector(".lorem").scrollHeight;
+        let 눈에보이는높이 = document.querySelector(".lorem").clientHeight;
+        console.log(스크롤양, 실제높이, 눈에보이는높이);
+
+        if(스크롤양 + 눈에보이는높이 >= 실제높이){
+          alert("끝까지 스크롤했습니다.");
+        }
+      });
     </script>
 
   </body>
