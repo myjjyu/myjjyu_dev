@@ -55,7 +55,7 @@
   padding: 30px;
   visibility: hidden; /* 애니메이션을 위한 시작 스타일 */
   opacity: 0; /* 애니메이션을 위한 시작 스타일 */
-  transition: all 1s; /* 모든 변화에 애니메이션 효과 추가 */
+  transition: all 1s; /*모든 변화에 애니메이션 효과 추가*/
 }
 
 /* 모달 내용 스타일 */

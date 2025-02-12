@@ -237,6 +237,21 @@
         // .bar 요소의 너비를 현재 스크롤 퍼센트로 설정합니다.
         document.querySelector(".bar").style.width = scrollPercentage + "%";
       });
+
+      // 배경클릭시 모달창 닫기
+      document.querySelector(".black-bg").addEventListener("click", function (e) {
+
+        // e.target // 유저가 실제로 누른거
+        // e.currentTarget // 이벤트 리스너 달린곳
+        // this;
+        // e.preventDefault(); // 이벤트 기본동작 막아줌
+        // e.stopPropagation(); // 이벤트 전파 막아줌
+
+        // 내가 실제로 누른게 까만 배경이면 모달창 닫아주세요 
+        if(e.target === document.querySelector(".black-bg")) {
+          document.querySelector(".black-bg").classList.remove("show");
+        }
+      }); 
     </script>
   </body>
 </html>
