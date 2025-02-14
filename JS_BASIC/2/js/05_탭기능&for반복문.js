@@ -68,4 +68,6 @@ function handleTab(index) {
   // 모든 탭 내용을 숨기고 클릭한 탭 내용을 표시
   contents.forEach((content) => content.classList.remove("show"));
   contents[index].classList.add("show");
+
+  console.log(index);
 }
