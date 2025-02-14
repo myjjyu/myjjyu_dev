@@ -248,7 +248,8 @@
         // e.stopPropagation(); // 이벤트 전파 막아줌
 
         // 내가 실제로 누른게 까만 배경이면 모달창 닫아주세요 
-        if(e.target === document.querySelector(".black-bg")) {
+        // if(e.target === document.querySelector(".black-bg")) {
+        if(e.target == this) {
           document.querySelector(".black-bg").classList.remove("show");
         }
       }); 
