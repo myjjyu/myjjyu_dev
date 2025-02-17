@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="./css/05_탭기능&for반복문.css" />
   </head>
   <body>
-<div class="container mt-3">
-  <div class=" card p-3">
-    <span>상품명</span>
-    <span>가격</span>
-    <span>컬러</span>
-  </div>
-</div>
+    <div class="container mt-3">
+      <div class="card p-3">
+        <span>상품명</span>
+        <span>가격</span>
+        <span>컬러</span>
+      </div>
+    </div>
 
     <div class="container mt-5">
       <ul class="list">
@@ -36,7 +36,7 @@
       <div class="tab-content">
         <p>배송정보입니다. Shipping</p>
       </div>
-    </div> 
+    </div>
     <!-- 부트스트랩 라이브러리 -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -56,16 +56,20 @@
     <script>
       // array 자료형
       // let car = ['벤츠', 50000, 'black'];
-      // car[3] = 2022; 
+      // car[3] = 2022;
       // console.log(car);
       // console.log(car[0]);
 
       // object 자료형
       // 이름 붙여서 저장가능한게 장점 key : value 형태
-         let car2 = {name:'아우디', price:50000, color:'black'};
-         document.querySelector('.card').innerHTML = `
+      let car2 = {
+        name: "아우디",
+        price: [50000, 40000, 30000],
+        color: "black",
+      };
+      document.querySelector(".card").innerHTML = `
          <span>${car2.name}</span>
-         <span>${car2.price}</span>
+         <span>${car2.price[2]}</span>
          <span>${car2.color}</span>
          `;
       // console.log(car2);
