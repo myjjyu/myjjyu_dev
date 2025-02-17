@@ -15,7 +15,7 @@
   <body>
 <div class="container mt-3">
   <div class=" card p-3">
-    상품명 / 가격
+    상품명 / 가격 / 컬러
   </div>
 </div>
 
@@ -50,5 +50,37 @@
     ></script>
 
     <script src="./js/05_탭기능&for반복문.js"></script>
+
+    <script>
+      // array 자료형
+      // let car = ['벤츠', 50000, 'black'];
+      // car[3] = 2022; 
+      // console.log(car);
+      // console.log(car[0]);
+
+      // object 자료형
+      // 이름 붙여서 저장가능한게 장점 key : value 형태
+         let car2 = {name:'아우디', price:50000, color:'black'};
+         document.querySelector('.card').innerHTML = `${car2.name} / ${car2.price} / ${car2.color}`;
+      // console.log(car2);
+      // console.log(car2['name']);
+      // console.log(car2.name);
+      // car2.year = 2022;
+      // console.log(car2);
+
+      /** array 와 object 의 차이점
+       *  array는 순서대로 저장, object는 이름을 붙여서 저장
+       *  array는 [] 사용, object는 {} 사용
+       *  array는 index로 접근, object는 key로 접근
+       *  array는 순서가 중요, object는 이름이 중요
+       *  array는 같은 자료형만 저장, object는 다른 자료형 저장 가능
+       *  array는 for문으로 반복, object는 for in문으로 반복
+       *  array는 length로 길이를 구할 수 있음, object는 length로 길이를 구할 수 없음
+       *  array는 push, pop, shift, unshift, splice 등의 메소드 사용 가능, object는 메소드 사용 불가능
+       *  array는 배열의 요소를 삭제하면 length가 줄어듬, object는 삭제해도 length가 줄어들지 않음
+       *  array는 배열의 요소를 삭제하면 undefined가 됨, object는 삭제하면 undefined가 됨
+       *  array는 배열의 요소를 삭제하면 배열의 요소가 삭제됨, object는 삭제하면 삭제된 요소가 삭제됨
+       */
+    </script>
   </body>
 </html>
