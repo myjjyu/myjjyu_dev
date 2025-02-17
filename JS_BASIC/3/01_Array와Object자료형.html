@@ -15,7 +15,9 @@
   <body>
 <div class="container mt-3">
   <div class=" card p-3">
-    상품명 / 가격 / 컬러
+    <span>상품명</span>
+    <span>가격</span>
+    <span>컬러</span>
   </div>
 </div>
 
@@ -61,7 +63,11 @@
       // object 자료형
       // 이름 붙여서 저장가능한게 장점 key : value 형태
          let car2 = {name:'아우디', price:50000, color:'black'};
-         document.querySelector('.card').innerHTML = `${car2.name} / ${car2.price} / ${car2.color}`;
+         document.querySelector('.card').innerHTML = `
+         <span>${car2.name}</span>
+         <span>${car2.price}</span>
+         <span>${car2.color}</span>
+         `;
       // console.log(car2);
       // console.log(car2['name']);
       // console.log(car2.name);
