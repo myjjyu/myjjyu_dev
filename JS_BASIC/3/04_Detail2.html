@@ -67,7 +67,6 @@
     <script src="./js/05_탭기능&for반복문.js"></script>
 
     <script>
-
       let car2 = {
         name: "아우디",
         price: [50000, 40000, 30000],
@@ -78,32 +77,57 @@
          <span>${car2.price[2]}</span>
          <span>${car2.color}</span>
          `;
-     
     </script>
 
     <script>
       let shirts = ["S", "M", "L"];
       let pants = [28, 30, 32, 34, 36];
 
-      document
-        .querySelector(".form-select")
-        .addEventListener("input", function () {
-          let sizeSelect = document.querySelectorAll(".form-select")[1];
-          let value = this.value;
+      //✅  for문 사용
 
+      // document
+      //   .querySelector(".form-select")
+      //   .addEventListener("input", function () {
+      //     let sizeSelect = document.querySelectorAll(".form-select")[1];
+      //     let value = this.value;
+
+      //     sizeSelect.innerHTML = ""; // 기존 옵션 초기화
+
+      //     if (value === "셔츠") {
+      //       for (let i = 0; i < shirts.length; i++) {
+      //         sizeSelect.innerHTML += `<option>${shirts[i]}</option>`;
+      //       }
+
+      //       sizeSelect.classList.remove("form-hide");
+      //     } else if (value === "바지") {
+      //       for (let j = 0; j < pants.length; j++) {
+      //         sizeSelect.innerHTML += `<option>${pants[j]}</option>`;
+      //       }
+      //       sizeSelect.classList.remove("form-hide");
+      //     } else {
+      //       sizeSelect.classList.add("form-hide");
+      //     }
+      //   });
+
+      //✅  forEach문 사용
+
+      document
+        .querySelectorAll(".form-select")[0]
+        .addEventListener("input", function () {
+          let value = document.querySelectorAll(".form-select")[0].value;
+          let sizeSelect = document.querySelectorAll(".form-select")[1];
           sizeSelect.innerHTML = ""; // 기존 옵션 초기화
 
-          if (value === "셔츠") {
-            for (let i = 0; i < shirts.length; i++) {
-              sizeSelect.innerHTML += `<option>${shirts[i]}</option>`;
-            }
-
+          if (value == "셔츠") {
             sizeSelect.classList.remove("form-hide");
-          } else if (value === "바지") {
-            for (let j = 0; j < pants.length; j++) {
-              sizeSelect.innerHTML += `<option>${pants[j]}</option>`;
-            }
+            shirts.forEach(function (a) {
+              sizeSelect.innerHTML += `<option>${a}</option>`;
+            });
+          } else if (value == "바지") {
             sizeSelect.classList.remove("form-hide");
+            pants.forEach(function (a) {
+              sizeSelect.innerHTML += `<option>${a}</option>`;
+            });
           } else {
             sizeSelect.classList.add("form-hide");
           }
