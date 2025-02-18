@@ -26,11 +26,12 @@
       <select class="form-select mt-2">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
       <select class="form-select mt-2 form-hide">
-        <option>S</option>
+        <!-- <option>S</option>
         <option>M</option>
-        <option>L</option>
+        <option>L</option> -->
       </select>
       <button class="btn btn-primary mt-3">주문하기</button>
     </form>
@@ -108,15 +109,32 @@
     </script>
 
     <script>
-  document.querySelector(".form-select").addEventListener("input", function() {
-    let value = this.value;
-    if (value === '셔츠') {
-      document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
-    } else {
-      document.querySelectorAll('.form-select')[1].classList.add('form-hide');
-    }
-  });
-</script>
+      document
+        .querySelector(".form-select")
+        .addEventListener("input", function () {
+          let sizeSelect = document.querySelectorAll(".form-select")[1];
+          let value = this.value;
+
+          if (value === "셔츠") {
+            sizeSelect.innerHTML = `
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+    `;
+            sizeSelect.classList.remove("form-hide");
+          } else if (value === "바지") {
+            sizeSelect.innerHTML = `
+      <option>28</option>
+      <option>30</option>
+      <option>32</option>
+      <option>34</option>
+      <option>36</option>
+    `;
+            sizeSelect.classList.remove("form-hide");
+          } else {
+            sizeSelect.classList.add("form-hide");
+          }
+        });
     </script>
   </body>
 </html>
