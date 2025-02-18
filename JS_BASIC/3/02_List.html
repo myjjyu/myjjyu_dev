@@ -15,7 +15,7 @@
   <body>
     <div class="card-group container">
       <!-- <div class="card">
-        <img src="https://via.placeholder.com/600" />
+        <img src="./img/600x600-1.jpg" />
         <div class="card-body">
           <h5>Card title</h5>
           <p>가격 : 7000</p>
@@ -65,19 +65,40 @@
         { id: 2, price: 30000, title: "Black Monastery" },
       ];
 
-      for (let i = 0; i < Products.length; i++) {
+      Products.forEach((product) => {
         let card = document.createElement("div");
         card.classList.add("card");
         card.innerHTML = `
           <div class="card-body">
-            <img src="https://via.placeholder.com/600" />
-            <h5>${Products[i].title}</h5>
-            <p>가격 : ${Products[i].price}</p>
+            <img src="./img/300.png">
+            <h5>${product.title}</h5>
+            <p>가격 : ${product.price}</p>
             <button class="btn btn-danger">주문하기</button>
           </div>
         `;
         document.querySelector(".card-group").appendChild(card);
-      }
+      });
+    </script>
+
+    <script>
+      // ✅ ajax 로 get 요청하는 법(서버에서 데이터 받아오기)_jQuery ver.
+      $.get('https://codingapple1.github.io/price.json').done(function (data) {
+      console.log("ajax 요청 :" + data.price);
+      }).fail(function () {
+        console.log("ajax 요청 실패");});
+    </script>
+
+    <script>
+      // ✅ ajax 로 get 요청하는 법(서버에서 데이터 받아오기)_javascript ver.
+      fetch('https://codingapple1.github.io/price.json')
+      .then(res => res.json()) // 받아온 json 데이터를 (object)객체로 변환
+      .then(data => {
+        console.log("fetch 요청 :" + data.price);
+      })
+      .catch((error) => {
+        console.log("fetch 요청 실패");
+      });
+
     </script>
   </body>
 </html>
