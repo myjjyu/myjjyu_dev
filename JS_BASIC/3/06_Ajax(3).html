@@ -23,7 +23,8 @@
       <button class="btn btn-danger me-2" id="more">더보기</button>
       <button class="btn btn-danger me-2" id="price">가격순 정렬</button>
       <button class="btn btn-danger me-2" id="arr1">문자열 내림 정렬</button>
-      <button class="btn btn-danger" id="price2">70000원 이하 상품만 보기</button>
+      <button class="btn btn-danger" id="price2">60000원 이하 상품만 보기</button>
+      <button class="btn btn-danger" id="reversebtn">처음으로 되돌리기</button>
     </div>
 
     <!-- 부트스트랩 라이브러리 -->
@@ -49,6 +50,8 @@
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
+
+      const originalProducts = [...products]; // 원래의 products 배열을 복사하여 저장
 
       // 상품을 화면에 추가하는 함수
       function productList(data) {
@@ -109,11 +112,18 @@
         productList(products);
       });
 
-      // "70000원 이하 상품만 보기" 버튼 클릭 이벤트
+      // "60000원 이하 상품만 보기" 버튼 클릭 이벤트
       document.querySelector("#price2").addEventListener("click", () => {
-        const newProducts = products.filter((v) => v.price < 70000); // 필터링 결과만 표시
+        const newProducts = products.filter((a) => a.price <= 60000); // 필터링 결과만 표시
         document.querySelector(".row").innerHTML = "";
         productList(newProducts);
+      });
+
+      // "처음으로 되돌리기" 버튼 클릭 이벤트
+      document.querySelector('#reversebtn').addEventListener('click', () => {
+        products = [...originalProducts]; // 원래의 products 배열로 되돌림
+        document.querySelector('.row').innerHTML = '';
+        productList(products);
       });
     </script>
   </body>
