@@ -6,6 +6,15 @@ console.log(number);
 number.sort((a,b)=>a-b);
 console.log(number);
 
+/** 
+ * filter함수
+ */
+// number 배열에서 값이 4보다 작은 요소들을 필터링하여 number2 배열에 저장
+let number2 = number.filter(function(a) {
+  return a < 4;
+});
+console.log(number2); // [0, 1, 2, 3]
+
 
 // 문자열에서는 localeCompare를 사용해야함!!!
 // 오름차순 가~하
