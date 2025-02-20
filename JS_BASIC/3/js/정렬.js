@@ -8,13 +8,24 @@ console.log(number);
 
 /** 
  * filter함수
+ * array 자료 필터링할때 사용
+ * number 배열에서 값이 4보다 작은 요소들을 필터링하여 number2 배열에 저장
  */
-// number 배열에서 값이 4보다 작은 요소들을 필터링하여 number2 배열에 저장
 let number2 = number.filter(function(a) {
   return a < 4;
 });
 console.log(number2); // [0, 1, 2, 3]
 
+/** 
+ * map함수
+ * array 자료 전부 변형하려면 map을 사용
+ * 배열에 4곱하기
+ */
+let number3 = number.map(function(a) {
+  return a * 4;
+}
+);
+console.log(number3); // [0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
 
 // 문자열에서는 localeCompare를 사용해야함!!!
 // 오름차순 가~하
