@@ -19,14 +19,11 @@
       </div>
     </div>
 
-    <div class="container">
-      <button class="btn btn-danger" id="more">더보기</button>
-    </div>
-
-    <div class="container">
-      <button class="btn btn-danger" id="price" style="margin-top: 10px">
-        가격순 정렬
-      </button>
+    <div class="container mt-3">
+      <button class="btn btn-danger me-2" id="more">더보기</button>
+      <button class="btn btn-danger me-2" id="price">가격순 정렬</button>
+      <button class="btn btn-danger me-2" id="arr1">문자열 내림 정렬</button>
+      <button class="btn btn-danger" id="price2">70000원 이하 상품만 보기</button>
     </div>
 
     <!-- 부트스트랩 라이브러리 -->
@@ -47,33 +44,22 @@
 
     <script>
       let count = 0; // 더보기 버튼을 누른 횟수를 저장하는 변수
-
-      // 처음에 보여줄 상품 목록 (배열 형태)
       let products = [
         { id: 0, price: 70000, title: "Blossom Dress" },
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
 
-      // 더보기 버튼 누르면 가격이 낮은순으로 정렬하기
-      document.querySelector("#price").addEventListener("click", () => {
-        products.sort((a, b) => a.price - b.price); // 배열 정렬
-        document.querySelector(".row").innerHTML = ""; // 기존 상품 제거
-        productList(products); // 정렬된 상품 다시 렌더링
-      });
-
-
       // 상품을 화면에 추가하는 함수
       function productList(data) {
-        const row = document.querySelector(".row"); // 상품이 들어갈 공간 선택
-
-        // 배열에 있는 상품 하나씩 가져와서 화면에 추가
+        const row = document.querySelector(".row");
+        row.innerHTML = ""; // 기존 내용 지우기
         data.forEach((v) => {
           row.insertAdjacentHTML(
             "beforeend",
             `<div class="col-sm-4">
-                <img src="./img/300.png" class="w-100"> 
-                <h5>${v.title}</h5> 
+                <img src="./img/300.png" class="w-100" />
+                <h5>${v.title}</h5>
                 <p>가격 : ${v.price}</p>
             </div>`
           );
@@ -85,30 +71,50 @@
 
       // "더보기" 버튼을 눌렀을 때 추가 상품을 가져오는 함수
       function getMore() {
-        count++; // 버튼을 누를 때마다 숫자 1씩 증가
-
-        let url = ""; // 데이터를 가져올 주소를 저장할 변수
+        count++;
+        let url = "";
 
         if (count === 1) {
-          url = "https://codingapple1.github.io/js/more1.json"; // 4~6번째 상품 가져오기
+          url = "https://codingapple1.github.io/js/more1.json";
         } else if (count === 2) {
-          url = "https://codingapple1.github.io/js/more2.json"; // 7~9번째 상품 가져오기
+          url = "https://codingapple1.github.io/js/more2.json";
         } else {
-          document.getElementById("more").style.display = "none"; // 더 이상 상품이 없으니 버튼 숨김
+          document.getElementById("more").style.display = "none";
           return;
         }
 
-        // 서버에서 상품 데이터를 가져오는 코드
-        fetch(url) // url에 있는 데이터 가져오기
-          .then((response) => response.json()) // 가져온 데이터를 JSON 형식으로 변환
-          .then((data) => productList(data)) // 변환된 데이터를 화면에 추가
-          .catch((error) =>
-            console.error("데이터를 불러오는 중 오류 발생:", error)
-          ); // 오류 발생 시 콘솔에 출력
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            products = products.concat(data); // 새 데이터를 products에 추가
+            productList(products);
+          })
+          .catch((error) => console.error("데이터를 불러오는 중 오류 발생:", error));
       }
 
-      // "더보기" 버튼을 클릭하면 getMore 함수 실행하도록 설정
+      // "더보기" 버튼 클릭 이벤트
       document.querySelector("#more").addEventListener("click", getMore);
+
+      // "가격순 정렬" 버튼 클릭 이벤트
+      document.querySelector("#price").addEventListener("click", () => {
+        products.sort((a, b) => a.price - b.price);
+        document.querySelector(".row").innerHTML = "";
+        productList(products);
+      });
+
+      // "문자열 내림 정렬" 버튼 클릭 이벤트
+      document.querySelector("#arr1").addEventListener("click", () => {
+        products.sort((a, b) => b.title.localeCompare(a.title)); // title 기준 내림차순
+        document.querySelector(".row").innerHTML = "";
+        productList(products);
+      });
+
+      // "70000원 이하 상품만 보기" 버튼 클릭 이벤트
+      document.querySelector("#price2").addEventListener("click", () => {
+        const newProducts = products.filter((v) => v.price < 70000); // 필터링 결과만 표시
+        document.querySelector(".row").innerHTML = "";
+        productList(newProducts);
+      });
     </script>
   </body>
 </html>
