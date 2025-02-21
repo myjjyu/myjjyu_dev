@@ -70,6 +70,28 @@
         });
       }
 
+      // 로컬스테이지에 저장하기
+      // localStorage : 유저가 삭제하지 않는 이상 계속 남아있음 키:값 쌍으로 저장
+      // 문자, 숫자만 저장가능
+      localStorage.setItem('gilju', 'song');
+      localStorage.getItem('gilju'); // 'song' 출력
+      localStorage.removeItem('gilju'); // 'gilju' 삭제
+
+      // 배열과 객체를 저장하려면 JSON.stringify()로 문자열로 변환하여 저장
+      let arr = [1, 2, 3, 4, 5];
+      let newarr = JSON.stringify(arr);
+      localStorage.setItem('arr', newarr);
+      localStorage.getItem('arr'); // "[1,2,3,4,5]" 출력
+
+      // JSON.parse()로 다시 객체로 변환
+      let arr2 = localStorage.getItem('arr');
+      let newarr2 = JSON.parse(arr2);
+      console.log(newarr2); // [1, 2, 3, 4, 5] 출력
+      console.log(newarr2[2]); // 3 출력
+
+      // sessionStorage : 브라우저를 닫으면 삭제됨
+      // localStorage : 브라우저를 닫아도 삭제되지 않음
+
       // 처음 페이지가 열릴 때 기본 상품 3개를 화면에 추가
       productList(products);
 
