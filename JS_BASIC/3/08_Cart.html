@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>서브메뉴_classList다루기</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/05_탭기능&for반복문.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <!-- 카드레이아웃_js 생성 -->
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <button class="btn btn-danger me-2" id="more">더보기</button>
+      <button class="btn btn-danger me-2" id="price">가격순 정렬</button>
+      <button class="btn btn-danger me-2" id="arr1">문자열 내림 정렬</button>
+      <button class="btn btn-danger" id="price2">60000원 이하 상품만 보기</button>
+      <button class="btn btn-danger" id="reversebtn">처음으로 되돌리기</button>
+    </div>
+
+    <!-- 부트스트랩 라이브러리 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- 제이쿼리 라이브러리 -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./js/05_탭기능&for반복문.js"></script>
+
+    <script>
+      let count = 0; // 더보기 버튼을 누른 횟수를 저장하는 변수
+      let products = [
+        { id: 0, price: 70000, title: "Blossom Dress" },
+        { id: 1, price: 50000, title: "Springfield Shirt" },
+        { id: 2, price: 60000, title: "Black Monastery" },
+      ];
+
+      const originalProducts = [...products]; // 원래의 products 배열을 복사하여 저장
+
+      // 상품을 화면에 추가하는 함수
+      function productList(data) {
+        const row = document.querySelector(".row");
+        row.innerHTML = ""; // 기존 내용 지우기
+        data.forEach((v) => {
+          row.insertAdjacentHTML(
+            "beforeend",
+            `<div class="col-sm-4">
+                <img src="./img/300.png" class="w-100" />
+                <h5>${v.title}</h5>
+                <p>가격 : ${v.price}</p>
+                <button class="buy">구매</button>
+            </div>`
+          );
+        });
+      }
+
+      // 처음 페이지가 열릴 때 기본 상품 3개를 화면에 추가
+      productList(products);
+
+      // "더보기" 버튼을 눌렀을 때 추가 상품을 가져오는 함수
+      function getMore() {
+        count++;
+        let url = "";
+
+        if (count === 1) {
+          url = "https://codingapple1.github.io/js/more1.json";
+        } else if (count === 2) {
+          url = "https://codingapple1.github.io/js/more2.json";
+        } else {
+          document.getElementById("more").style.display = "none";
+          return;
+        }
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            products = products.concat(data); // 새 데이터를 products에 추가
+            productList(products);
+          })
+          .catch((error) => console.error("데이터를 불러오는 중 오류 발생:", error));
+      }
+
+      // "더보기" 버튼 클릭 이벤트
+      document.querySelector("#more").addEventListener("click", getMore);
+
+      // "가격순 정렬" 버튼 클릭 이벤트
+      document.querySelector("#price").addEventListener("click", () => {
+        products.sort((a, b) => a.price - b.price);
+        document.querySelector(".row").innerHTML = "";
+        productList(products);
+      });
+
+      // "문자열 내림 정렬" 버튼 클릭 이벤트
+      document.querySelector("#arr1").addEventListener("click", () => {
+        products.sort((a, b) => b.title.localeCompare(a.title)); // title 기준 내림차순
+        document.querySelector(".row").innerHTML = "";
+        productList(products);
+      });
+
+      // "60000원 이하 상품만 보기" 버튼 클릭 이벤트
+      document.querySelector("#price2").addEventListener("click", () => {
+        const newProducts = products.filter((a) => a.price <= 60000); // 필터링 결과만 표시
+        document.querySelector(".row").innerHTML = "";
+        productList(newProducts);
+      });
+
+      // "처음으로 되돌리기" 버튼 클릭 이벤트
+      document.querySelector('#reversebtn').addEventListener('click', () => {
+        products = [...originalProducts]; // 원래의 products 배열로 되돌림
+        document.querySelector('.row').innerHTML = '';
+        productList(products);
+      });
+    </script>
+  </body>
+</html>
