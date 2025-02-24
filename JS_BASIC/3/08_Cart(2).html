@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니 페이지</title>
+  </head>
+  <body>
+    <h1>장바구니 페이지</h1>
+    <!-- 장바구니 목록이 표시될 공간 -->
+    <div id="cart-container"></div>
+
+    <script>
+      // localStorage에서 'cart'라는 이름으로 저장된 데이터를 가져옴
+      // localStorage는 브라우저에 데이터를 저장하는 곳임!
+      // JSON.parse()는 문자열을 객체로 바꿔주는 함수임!
+      const cart = JSON.parse(localStorage.getItem("cart")) || []; 
+      // 만약 cart 데이터가 없으면 빈 배열([])을 사용함
+
+      // HTML에서 id가 "cart-container"인 요소를 가져옴
+      const cartContainer = document.getElementById("cart-container");
+
+      // cart 배열에 있는 각각의 상품(item)을 화면에 표시함
+      cart.forEach((item) => {
+        // <p> 태그를 새로 만듦 (문단을 만드는 태그임)
+        const p = document.createElement("p");
+        // <p> 태그 안에 상품명과 수량을 넣음 (예: 사과 - 3개)
+        p.textContent = `상품이름 : ${item.title} / 상품수량: ${item.quantity}개`; 
+        // 만든 <p> 태그를 cartContainer에 추가함 (화면에 보이게 됨!)
+        cartContainer.appendChild(p);
+      });
+
+      // 만약 장바구니(cart 배열에 상품이 없음)가 비었으면 아래 메시지 표시
+      if (cart.length === 0) {
+        // cartContainer에 "<p>장바구니가 비었습니다.</p>" 넣음
+        cartContainer.innerHTML = "<p>장바구니가 비었습니다.</p>";
+      }
+    </script>
+  </body>
+</html>
