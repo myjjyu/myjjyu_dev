@@ -23,7 +23,9 @@
       <button class="btn btn-danger me-2" id="more">더보기</button>
       <button class="btn btn-danger me-2" id="price">가격순 정렬</button>
       <button class="btn btn-danger me-2" id="arr1">문자열 내림 정렬</button>
-      <button class="btn btn-danger" id="price2">60000원 이하 상품만 보기</button>
+      <button class="btn btn-danger" id="price2">
+        60000원 이하 상품만 보기
+      </button>
       <button class="btn btn-danger" id="reversebtn">처음으로 되돌리기</button>
     </div>
 
@@ -68,6 +70,28 @@
             </div>`
           );
         });
+
+        // 구매 버튼 이벤트 리스너 추가
+        document.querySelectorAll(".buy").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            const title =
+              e.target.previousElementSibling.previousElementSibling.textContent;
+
+            // localStorage에 'cart'가 있으면 가져옴, 없으면 빈 배열 생성
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            // 동일한 상품이 있으면 수량을 증가, 없으면 새로 추가
+            const existingItem = cart.find((item) => item.title === title);
+
+            if (existingItem) {
+              existingItem.count += 1;
+            } else {
+              cart.push({ title, count: 1 });
+            }
+            // localStorage에 cart 업데이트
+            localStorage.setItem("cart", JSON.stringify(cart));
+          });
+        });
       }
 
       // 처음 페이지가 열릴 때 기본 상품 3개를 화면에 추가
@@ -93,7 +117,9 @@
             products = products.concat(data); // 새 데이터를 products에 추가
             productList(products);
           })
-          .catch((error) => console.error("데이터를 불러오는 중 오류 발생:", error));
+          .catch((error) =>
+            console.error("데이터를 불러오는 중 오류 발생:", error)
+          );
       }
 
       // "더보기" 버튼 클릭 이벤트
@@ -121,9 +147,9 @@
       });
 
       // "처음으로 되돌리기" 버튼 클릭 이벤트
-      document.querySelector('#reversebtn').addEventListener('click', () => {
+      document.querySelector("#reversebtn").addEventListener("click", () => {
         products = [...originalProducts]; // 원래의 products 배열로 되돌림
-        document.querySelector('.row').innerHTML = '';
+        document.querySelector(".row").innerHTML = "";
         productList(products);
       });
     </script>
