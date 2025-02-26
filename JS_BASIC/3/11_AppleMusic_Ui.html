@@ -40,31 +40,31 @@
     ></script>
 
     <script>
-     $(window).scroll(function(){
-    var h = $(window).scrollTop();// 스크롤 위치
+      $(window).scroll(function () {
+        var h = $(window).scrollTop(); // 스크롤 위치
 
-    // 1. 카드박스1, 카드박스2 투명도 조절
-    var y1 = (1/-300)*h + (1000/300);
-    var y2 = (1/-300)*h + (1950/300);
+        // 1. 카드박스1, 카드박스2 투명도 조절
+        var y1 = (1 / -300) * h + 1000 / 300;
+        var y2 = (1 / -300) * h + 1950 / 300;
 
-    $('.card-box').eq(0).css({opacity:y1});
-    $('.card-box').eq(1).css({opacity:y2});
+        $(".card-box").eq(0).css({ opacity: y1 });
+        $(".card-box").eq(1).css({ opacity: y2 });
 
-      // 2. 카드박스1, 카드박스2 크기 조절
-    var s1 = (-2/3000)*h + (44/30);
-    var s2 = (-2/3000)*h + (630/300);
+        // 2. 카드박스1, 카드박스2 크기 조절
+        var s1 = (-2 / 3000) * h + 44 / 30;
+        var s2 = (-2 / 3000) * h + 630 / 300;
 
-    if(h>=700 && h<=1000){
-      $('.card-box').eq(0).css('transform',`scale(${s1})`);
-    }else{
-      $('.card-box').eq(0).css('transform','scale(1)');
-      if(h>=1650 && h<=1950){
-        $('.card-box').eq(1).css('transform',`scale(${s2})`);
-      }else{
-        $('.card-box').eq(1).css('transform','scale(1)');
-      }
-    }
-  });
+        if (h >= 700 && h <= 1000) {
+          $(".card-box").eq(0).css("transform", `scale(${s1})`);
+        } else {
+          $(".card-box").eq(0).css("transform", "scale(1)");
+          if (h >= 1650 && h <= 1950) {
+            $(".card-box").eq(1).css("transform", `scale(${s2})`);
+          } else {
+            $(".card-box").eq(1).css("transform", "scale(1)");
+          }
+        }
+      });
     </script>
   </body>
 </html>
