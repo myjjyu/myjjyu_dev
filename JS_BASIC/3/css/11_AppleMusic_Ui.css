@@ -2,7 +2,7 @@
   height: 3000px;
   margin-top: 800px;
   margin-bottom: 1600px;
-  background-color: rgb(253, 188, 188);
+  /* background-color: rgb(253, 188, 188); */
 }
 .card-box img {
   display: block;
@@ -11,7 +11,7 @@
 }
 .card-box {
   position: sticky;
-  top: 300px;
+  top: 400px;
   margin-top: 200px;
   transform: all 0.3s;
 }

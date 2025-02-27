@@ -102,6 +102,47 @@
     ></script>
 
     <script>
+      let 시작좌표 = 0;
+      let 눌렀냐 = false;
+      let 현재위치 = 0; // 슬라이드 현재 위치 저장
+
+      const slideBox = document.querySelector(".slide-box");
+      const slideContainer = document.querySelector(".slide-container");
+
+      slideBox.addEventListener("mousedown", function (e) {
+        시작좌표 = e.clientX;
+        눌렀냐 = true;
+      });
+
+      document.addEventListener("mousemove", function (e) {
+        if (!눌렀냐) return;
+
+        let 이동거리 = e.clientX - 시작좌표 + 현재위치; // 현재 위치 반영
+        slideContainer.style.transform = `translateX(${이동거리}px)`;
+      });
+
+      document.addEventListener("mouseup", function (e) {
+        if (!눌렀냐) return;
+
+        눌렀냐 = false;
+
+        let 이동거리 = e.clientX - 시작좌표;
+
+        if (이동거리 < -100) {
+          현재위치 = -window.innerWidth; // 왼쪽 슬라이드 이동
+        } else {
+          현재위치 = 0; // 원래 위치로 돌아감
+        }
+
+        slideContainer.style.transform = `translateX(${현재위치}px)`;
+      });
+
+      slideBox.addEventListener("mouseleave", function () {
+        눌렀냐 = false;
+      });
+    </script>
+
+    <script>
       $(".navbar-toggler").on("click", function () {
         $(".list-group").toggleClass("show");
       });
