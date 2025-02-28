@@ -21,9 +21,10 @@ tabs.forEach((tab) => {
  * ajax 통신을 통해 상품 정보를 받아와서 화면에 추가
  */
 fetch("../json/store.json")
-  .then((Response) => Response.json())
+  .then((response) => response.json())
   .then((data) => {
-    productList(data);
+    console.log(data);
+    productList(data.products); // products 배열을 전달
   })
   .catch((error) => {
     console.error("에러 발생", error);
@@ -49,3 +50,4 @@ function productList(products) {
     productContainer.innerHTML += productCard;
   });
 }
+
