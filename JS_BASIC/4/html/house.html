@@ -9,6 +9,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../css/house.css">
     <title>Home</title>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,11 +34,12 @@
       </div>
     </nav>
 
+    <div id="content">
     <div>
       <input type="text" placeholder="검색어입력">
     </div>
-
-    <div class="card" style="width: 18rem; padding: 20px;">
+    
+    <!-- <div class="card" style="width: 18rem; padding: 20px;">
       <img src="../img/pr1.JPG" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">식기세척기</h5>
@@ -45,8 +47,18 @@
         <p class="card-text">가격 : 10000</p>
         <button>담기</button>
       </div>
+    </div> -->
+
+    <div id="product-list" class="d-flex flex-wrap gap-3"></div> <!-- 상품 리스트 추가할 영역 -->
+
+
+    <div class="cart-container">
+      <div class="carttext">장바구니</div>
+      <div class="cart">
+        <p>여기로 드래그 해주세요</p></div>
     </div>
 
+  </div>
   </head>
   <body>
     <!-- 부트스트랩 라이브러리 -->
@@ -62,5 +74,7 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
+
+    <script src="../js/house.js"></script>
   </body>
 </html>
