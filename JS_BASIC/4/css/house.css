@@ -3,6 +3,9 @@ body {
 }
 
 .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
   background-color: rgb(95, 95, 95) !important;
 }
 
@@ -18,7 +21,7 @@ body {
 }
 
 #content {
-  padding: 30px;
+  padding: 80px 30px 30px;
 }
 
 #product-list {
