@@ -172,3 +172,13 @@ cartContainer.addEventListener("input", function (event) {
     updateCartUI();
   }
 });
+
+// ✅ 구매하기 버튼 클릭시 modal 창 띄우기
+document.querySelector(".totalBtn").addEventListener("click", function () {
+  document.querySelector(".black-bg").classList.add("show");
+});
+
+ // 띄어진 모달창 close누르면 닫기
+ document.querySelector("#close").addEventListener("click", function () {
+  document.querySelector(".black-bg").classList.remove("show");
+});

@@ -54,3 +54,49 @@ body {
     }
   }
 }
+
+.total p{
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.totalprice{
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(10, 35, 102);
+  margin-bottom: 5px;
+}
+
+/* 모달 배경 기본 스타일: 숨김 상태 */
+.black-bg {
+  width: 100vw;  /* 전체 화면 너비 */
+  height: 100vh; /* 전체 화면 높이 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); /* 배경을 더 확실하게 어둡게 */
+  z-index: 9999; /* 다른 요소들 위로 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  visibility: hidden; /* 애니메이션을 위한 시작 스타일 */
+  opacity: 0; /* 애니메이션을 위한 시작 스타일 */
+  transition: all 1s; /* 모든 변화에 애니메이션 효과 추가 */
+}
+
+/* 모달 내용 스타일 */
+.white-bg {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  width: 500px; /* 크기 조절 */
+  z-index: 10000; /* 모달이 배경보다 위에 오도록 */
+}
+
+/* 모달이 보이는 상태 */
+.show {
+  visibility: visible;
+  opacity: 1;
+}

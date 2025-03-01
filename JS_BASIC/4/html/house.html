@@ -43,13 +43,10 @@
       </div>
     </nav>
 
+    
     <div id="content">
       <div>
-        <input
-          type="text"
-          id="search"
-          placeholder="검색어 입력"
-        />
+        <input type="text" id="search" placeholder="검색어 입력" />
         <button id="searchBtn">검색</button>
       </div>
 
@@ -63,14 +60,51 @@
         <button>담기</button>
       </div> -->
       </div>
+    </div>
 
-      <!-- ✅ 상품카드 js로 추가하기 -->
+    <!-- 구매하기 modal -->
+    <div class="black-bg">
+      <div class="white-bg">
+        <form action="success.html">
+          <div class="my-3">
+            성함
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="성함을 입력하세요"
+            />
+          </div>
+          <div class="my-3">
+            연락처
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="연락처를 입력하세요"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">입력완료</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
+      </div>
     </div>
 
     <div class="cart-container">
       <div class="carttext">장바구니</div>
-      <div id="cart1" class="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div
+        id="cart1"
+        class="cart"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+      >
         <p>여기로 드래그 해주세요</p>
+      </div>
+
+      <div class="total">
+        <p>최종가격</p>
+        <div class="totalprice">합계 : 0</div>
+        <button class="totalBtn">구매하기</button>
       </div>
     </div>
 
