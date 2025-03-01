@@ -102,12 +102,14 @@ function allowDrop(event) {
 }
 
 function drag(event) {
-
   // 드래그한 상푸의 이름을 데이터로 저장
-  event.dataTransfer.setData("text", event.target.querySelector(".card-title").textContent);
+  event.dataTransfer.setData(
+    "text",
+    event.target.querySelector(".card-title").textContent
+  );
 }
 
-function drop(event) { 
+function drop(event) {
   event.preventDefault(); // 드롭 이벤트 허용
   const productName = event.dataTransfer.getData("text"); // 드래그한 상품 이름 가져오기
   addToCart(productName); // 장바구니에 상품 추가
@@ -115,47 +117,58 @@ function drop(event) {
 
 // ✅ 담기 버튼 클릭 시 상품 추가
 const productContainer = document.querySelector("#product-list"); // 상품 목록 컨테이너 선택
-productContainer.addEventListener("click", function (event) { 
+productContainer.addEventListener("click", function (event) {
   if (event.target.classList.contains("btn-primary")) {
-    const productName = event.target.closest(".card").querySelector(".card-title").textContent;
+    const productName = event.target
+      .closest(".card")
+      .querySelector(".card-title").textContent;
     addToCart(productName);
   }
 });
 
 // ✅ 장바구니에 상품 추가하는 함수
-function addToCart(productName) { // 상품 이름을 받아와서 장바구니에 추가
+function addToCart(productName) {
+  // 상품 이름을 받아와서 장바구니에 추가
   const product = allProducts.find((item) => item.title === productName); // 상품 목록에서 상품 찾기
   if (!product) return; // 상품이 없으면 함수 종료
 
-   // 이미 장바구니에 담긴 상품이면 수량만 증가
-  if (cartItems[productName]) { 
-    cartItems[productName].quantity += 1; 
-  } else { // 장바구니에 없는 상품이면 수량을 1로 해서 추가
+  // 이미 장바구니에 담긴 상품이면 수량만 증가
+  if (cartItems[productName]) {
+    cartItems[productName].quantity += 1;
+  } else {
+    // 장바구니에 없는 상품이면 수량을 1로 해서 추가
     cartItems[productName] = { ...product, quantity: 1 };
   }
   updateCartUI(); // 장바구니 UI 업데이트
 }
 
-// ✅ 장바구니 UI 업데이트
+// ✅ 장바구니 UI 업데이트 + 합계 가격 업데이트
 function updateCartUI() {
   cartContainer.innerHTML = "";
+  let totalPrice = 0; // 총 가격을 저장할 변수
 
   Object.values(cartItems).forEach((item) => {
     const cartCard = document.createElement("div");
     cartCard.classList.add("cart-card");
     cartCard.innerHTML = `
-      <div class="card" style="width: 18rem; padding: 20px; margin: 10px;">
-        <img src="../img/${item.photo}" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">${item.title}</h5>
-          <p class="card-text">${item.brand}</p>
-          <p class="card-text">${item.price}원</p>
-          <input type="number" class="cart-quantity" value="${item.quantity}" min="1" data-title="${item.title}">
-        </div>
+    <div class="card" style="width: 18rem; padding: 20px; margin: 10px;">
+      <img src="../img/${item.photo}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">${item.title}</h5>
+        <p class="card-text">${item.brand}</p>
+        <p class="card-text">${item.price}원</p>
+        <input type="number" class="cart-quantity" value="${item.quantity}" min="1" data-title="${item.title}">
       </div>
-    `;
+    </div>
+  `;
     cartContainer.appendChild(cartCard);
+
+    // ✅ 상품 가격 * 수량을 누적하여 총 가격 계산
+    totalPrice += item.price * item.quantity;
   });
+
+  // ✅ 총 가격 업데이트
+  document.querySelector(".totalprice").innerText = `합계 : ${totalPrice}원`;
 }
 
 // ✅ 장바구니에 담겨있는 상품 수량 변경 시 수량 업데이트
@@ -163,7 +176,7 @@ cartContainer.addEventListener("input", function (event) {
   if (event.target.classList.contains("cart-quantity")) {
     const productName = event.target.dataset.title;
     const newQuantity = parseInt(event.target.value, 10);
-    
+
     if (newQuantity > 0) {
       cartItems[productName].quantity = newQuantity;
     } else {
@@ -178,7 +191,7 @@ document.querySelector(".totalBtn").addEventListener("click", function () {
   document.querySelector(".black-bg").classList.add("show");
 });
 
- // 띄어진 모달창 close누르면 닫기
- document.querySelector("#close").addEventListener("click", function () {
+// 띄어진 모달창 close누르면 닫기
+document.querySelector("#close").addEventListener("click", function () {
   document.querySelector(".black-bg").classList.remove("show");
 });

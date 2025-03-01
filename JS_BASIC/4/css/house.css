@@ -68,7 +68,7 @@ body {
   margin-bottom: 5px;
 }
 
-/* 모달 배경 기본 스타일: 숨김 상태 */
+/* 📌 모달 배경 기본 스타일: 숨김 상태 */
 .black-bg {
   width: 100vw;  /* 전체 화면 너비 */
   height: 100vh; /* 전체 화면 높이 */
