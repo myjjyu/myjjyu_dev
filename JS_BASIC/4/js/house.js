@@ -195,3 +195,71 @@ document.querySelector(".totalBtn").addEventListener("click", function () {
 document.querySelector("#close").addEventListener("click", function () {
   document.querySelector(".black-bg").classList.remove("show");
 });
+
+// 간단한 정규식 검사
+document
+  .querySelector(".btn-primary")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // 기본 폼 제출을 막기 위해 추가
+
+    const name = document.querySelector("#name").value;
+    const phone = document.querySelector("#phone").value;
+
+    if (name === "") {
+      alert("이름을 입력해주세요");
+    } else if (phone === "") {
+      alert("전화번호를 입력해주세요");
+    } else {
+      // canvas에 영수증 내용 그리기
+      drawReceipt(name, phone);
+
+      // 영수증을 화면에 표시
+      document.querySelector(".black-bg").classList.add("show"); // modal 띄우기
+    }
+  });
+
+// 📌 영수증
+function drawReceipt(name, phone) {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  // 캔버스를 초기화
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 영수증 배경색
+  ctx.fillStyle = "#f0f0f0";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // 텍스트 스타일 설정
+  ctx.fillStyle = "#000";
+  ctx.font = "20px Arial";
+  ctx.textAlign = "left";
+
+  // 현재 날짜와 시간 출력
+  const currentDate = new Date().toLocaleString(); // 현재 날짜와 시간
+  ctx.fillText(`날짜: ${currentDate}`, 20, 30);
+
+  // 성함과 연락처 출력
+  ctx.fillText(`성함: ${name}`, 20, 60);
+  ctx.fillText(`연락처: ${phone}`, 20, 90);
+
+  // 상품 목록 출력
+  ctx.font = "18px Arial";
+  let yPosition = 130; // 상품 출력 시작 위치
+  let totalPrice = 0;
+
+  Object.values(cartItems).forEach((item) => {
+    ctx.fillText(`${item.title}`, 20, yPosition);
+    ctx.fillText(`가격: ${item.price}원`, 20, yPosition + 20);
+    ctx.fillText(`수량: ${item.quantity}개`, 20, yPosition + 40);
+    const itemTotal = item.price * item.quantity;
+    ctx.fillText(`합계: ${itemTotal}원`, 20, yPosition + 60);
+
+    totalPrice += itemTotal; // 총합계 계산
+    yPosition += 90; // 한 상품마다 90px씩 아래로 내려갑니다.
+  });
+
+  // 총합계 출력
+  ctx.font = "20px Arial";
+  ctx.fillText(`총합계: ${totalPrice}원`, 20, yPosition + 20);
+}
