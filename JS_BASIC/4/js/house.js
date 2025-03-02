@@ -176,7 +176,7 @@ function updateCartUI() {
         <p class="card-text">${item.price}원</p>
         <input type="number" class="cart-quantity" value="${item.quantity}" min="1" data-title="${item.title}">
       </div>
-    </div>
+    </div>ㅎ
   `;
     cartContainer.appendChild(cartCard);
 
