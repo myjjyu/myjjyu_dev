@@ -13,6 +13,7 @@
     <title>Home</title>
   </head>
   <body>
+    <!-- 📌 상단 navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">집꾸미기</a>
@@ -43,12 +44,14 @@
       </div>
     </nav>
 
+    <!-- 📌 상품 검색 -->
     <div id="content">
       <div>
         <input type="text" id="search" placeholder="검색어 입력" />
         <button id="searchBtn">검색</button>
       </div>
 
+      <!-- 📌 상품 리스트 -->
       <div id="product-list" class="product-list product">
         <!-- <div class="card" style="width: 18rem;">
       <img src="../img/pr1.JPG" class="card-img-top">
@@ -61,10 +64,29 @@
       </div>
     </div>
 
+    <!-- 📌 장바구니 -->
+    <div class="cart-container">
+      <div class="carttext">장바구니(드래그 가능)</div>
+      <div
+        id="cart1"
+        class="cart"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+      >
+        <p>여기로 드래그 해주세요</p>
+      </div>
+
+      <div class="total">
+        <p>최종가격</p>
+        <div class="totalprice">합계 : 0</div>
+        <button class="totalBtn">구매하기</button>
+      </div>
+    </div>
+
     <!-- 📌 구매하기 modal -->
-    <div class="black-bg">
+    <div class="modal1">
       <div class="white-bg">
-        <form>
+        <form src="../html/영수증.html">
           <div class="my-3">
             성함
             <input
@@ -89,27 +111,15 @@
       </div>
     </div>
 
-    <div class="cart-container">
-      <div class="carttext">장바구니</div>
-      <div
-        id="cart1"
-        class="cart"
-        ondrop="drop(event)"
-        ondragover="allowDrop(event)"
-      >
-        <p>여기로 드래그 해주세요</p>
-      </div>
-
-      <div class="total">
-        <p>최종가격</p>
-        <div class="totalprice">합계 : 0</div>
-        <button class="totalBtn">구매하기</button>
+    <!-- 📌 영수증 modal -->
+    <div class="modal2">
+      <div class="white-bg">
+        <h4>영수증</h4>
+      <canvas id="canvas" width="350" height="350"></canvas>
+      <div>
+        <button id="close">닫기</button>
       </div>
     </div>
-
-    <!-- 📌 영수증 이미지 -->
-    <canvas id="canvas" width="350" height="350"></canvas>
-   
 
     <!-- 📌 부트스트랩 라이브러리 -->
     <script
@@ -117,7 +127,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
     <!-- 📌 제이쿼리 라이브러리 -->
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"

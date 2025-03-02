@@ -23,7 +23,7 @@ tabs.forEach((tab) => {
 
 let allProducts = []; // 전체 상품 목록을 저장할 변수
 
-// ✅ 상품 데이터 가져오기
+// 📌 상품 데이터 가져오기
 fetch("../json/store.json")
   .then((response) => response.json())
   .then((data) => {
@@ -34,7 +34,7 @@ fetch("../json/store.json")
     console.error("에러 발생", error);
   });
 
-// ✅ 상품 목록을 화면에 출력하는 함수
+// 📌 상품 목록을 화면에 출력하는 함수
 function productList(products) {
   const productContainer = document.querySelector("#product-list");
   productContainer.innerHTML = ""; // 기존 목록 초기화
@@ -60,7 +60,7 @@ function productList(products) {
   });
 }
 
-// ✅ 검색 버튼 클릭 시 또는 Enter 키 입력 시 검색 실행
+// 📌 검색 버튼 클릭 시 또는 Enter 키 입력 시 검색 실행
 document.querySelector("#searchBtn").addEventListener("click", searchProducts);
 document.querySelector("#search").addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
@@ -68,22 +68,39 @@ document.querySelector("#search").addEventListener("keyup", function (e) {
   }
 });
 
-// ✅ 검색 기능을 실행하는 함수
-// 1. 검색창에 사용자가 입력한 글자를 가져와서
-//    소문자로 바꾸고(대소문자 구분 없이 검색 가능하게),
-//    앞뒤 공백(스페이스)을 없애준다
+// 📌 검색 기능을 실행하는 함수
 function searchProducts() {
+  // 1. 검색창에서 사용자가 입력한 글자를 가져와서
   const searchText = document
-    .querySelector("#search")
-    .value.toLowerCase()
-    .trim();
+    .querySelector("#search") // 검색창을 찾음
+    .value // 검색창에 입력한 값
+    .toLowerCase() // 소문자로 바꿔서 대소문자 구분 없이
+    .trim(); // 앞뒤 공백을 없애
 
   // 2. 상품 목록에서 검색어가 포함된 상품만 찾아서 새로운 배열로 만든다
   const filteredProducts = allProducts.filter(
     (item) => item.title.toLowerCase().includes(searchText) // 상품 제목에 검색어가 포함되어 있는지 확인
   );
-  // 3. 검색된 상품 목록을 화면에 표시합니다.
-  productList(filteredProducts);
+
+  // 3. 검색된 상품 목록을 화면에 표시
+  productList(filteredProducts); // 검색된 상품들을 화면에 보여줌
+
+  // 🔹 검색된 상품의 제목에 노란색 하이라이트 추가
+  if (searchText) {
+    // 검색어가 있으면
+    const productTitles = document.querySelectorAll(".card-title"); // 모든 상품 제목을 찾아옴
+    productTitles.forEach((title) => {
+      // 각 상품 제목에 대해 반복
+      const originalText = title.textContent; // 원본 텍스트를 가져옴
+      const regex = new RegExp(`(${searchText})`, "gi"); // 검색어를 대소문자 구분 없이 찾는 정규표현식
+      title.innerHTML = originalText.replace(
+        regex, // 검색어와 일치하는 부분을 찾아서
+        // 해당 부분에 노란색 배경을 추가
+        //$1은 첫 번째 캡처 그룹에 해당하는 부분(즉, 사용자가 검색한 단어)을 의미
+        `<span style="background-color: yellow;">$1</span>` 
+      );
+    });
+  }
 }
 
 /**
@@ -96,7 +113,7 @@ function searchProducts() {
 const cartContainer = document.querySelector("#cart1");
 let cartItems = {}; // 장바구니에 담긴 상품들을 저장할 객체
 
-// ✅ 상품 드래그 앤 드롭 관련 함수
+// 📌 상품 드래그 앤 드롭 관련 함수
 function allowDrop(event) {
   event.preventDefault(); // 드롭 이벤트 허용
 }
@@ -115,7 +132,7 @@ function drop(event) {
   addToCart(productName); // 장바구니에 상품 추가
 }
 
-// ✅ 담기 버튼 클릭 시 상품 추가
+// 📌 담기 버튼 클릭 시 상품 추가
 const productContainer = document.querySelector("#product-list"); // 상품 목록 컨테이너 선택
 productContainer.addEventListener("click", function (event) {
   if (event.target.classList.contains("btn-primary")) {
@@ -126,7 +143,7 @@ productContainer.addEventListener("click", function (event) {
   }
 });
 
-// ✅ 장바구니에 상품 추가하는 함수
+// 📌 장바구니에 상품 추가하는 함수
 function addToCart(productName) {
   // 상품 이름을 받아와서 장바구니에 추가
   const product = allProducts.find((item) => item.title === productName); // 상품 목록에서 상품 찾기
@@ -142,9 +159,9 @@ function addToCart(productName) {
   updateCartUI(); // 장바구니 UI 업데이트
 }
 
-// ✅ 장바구니 UI 업데이트 + 합계 가격 업데이트
+// 📌 장바구니 UI 업데이트 + 합계 가격 업데이트
 function updateCartUI() {
-  cartContainer.innerHTML = "";
+  cartContainer.innerHTML = ""; // 기존 장바구니 내용 비우기
   let totalPrice = 0; // 총 가격을 저장할 변수
 
   Object.values(cartItems).forEach((item) => {
@@ -163,15 +180,14 @@ function updateCartUI() {
   `;
     cartContainer.appendChild(cartCard);
 
-    // ✅ 상품 가격 * 수량을 누적하여 총 가격 계산
+    // 📌 상품 가격 * 수량을 누적하여 총 가격 계산
     totalPrice += item.price * item.quantity;
   });
-
-  // ✅ 총 가격 업데이트
+  // 📌 총 가격 업데이트
   document.querySelector(".totalprice").innerText = `합계 : ${totalPrice}원`;
 }
 
-// ✅ 장바구니에 담겨있는 상품 수량 변경 시 수량 업데이트
+// 📌 장바구니에 담겨있는 상품 수량 변경 시 수량 업데이트
 cartContainer.addEventListener("input", function (event) {
   if (event.target.classList.contains("cart-quantity")) {
     const productName = event.target.dataset.title;
@@ -186,14 +202,14 @@ cartContainer.addEventListener("input", function (event) {
   }
 });
 
-// ✅ 구매하기 버튼 클릭시 modal 창 띄우기
+// 📌 구매하기 버튼 클릭시 modal 창 띄우기
 document.querySelector(".totalBtn").addEventListener("click", function () {
-  document.querySelector(".black-bg").classList.add("show");
+  document.querySelector(".modal1").classList.add("show");
 });
 
-// 띄어진 모달창 close누르면 닫기
-document.querySelector("#close").addEventListener("click", function () {
-  document.querySelector(".black-bg").classList.remove("show");
+// 📌 modal1 닫기 버튼 기능 (입력창 닫기)
+document.querySelector(".modal1 #close").addEventListener("click", function () {
+  document.querySelector(".modal1").classList.remove("show");
 });
 
 // 간단한 정규식 검사
@@ -214,9 +230,14 @@ document
       drawReceipt(name, phone);
 
       // 영수증을 화면에 표시
-      document.querySelector(".black-bg").classList.add("show"); // modal 띄우기
+      document.querySelector(".modal2").classList.add("show"); // modal 띄우기
     }
   });
+
+// 📌 modal2 닫기 버튼 기능 (확실하게 modal2 내부의 버튼을 선택)
+document.querySelector(".modal2 #close").addEventListener("click", function () {
+  document.querySelector(".modal2").classList.remove("show");
+});
 
 // 📌 영수증
 function drawReceipt(name, phone) {

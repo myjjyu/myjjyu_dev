@@ -1,5 +1,21 @@
 body {
-  background-color: rgb(228, 228, 228);
+  background: #f4f4f4;
+}
+
+button {
+  background: black;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 5px 12px 5px 12px;
+}
+
+.btn{
+  background: black;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 5px 12px 5px 12px;
 }
 
 .navbar {
@@ -69,7 +85,7 @@ body {
 }
 
 /* 📌 모달 배경 기본 스타일: 숨김 상태 */
-.black-bg {
+.modal1, .modal2 {
   width: 100vw;  /* 전체 화면 너비 */
   height: 100vh; /* 전체 화면 높이 */
   position: fixed;
