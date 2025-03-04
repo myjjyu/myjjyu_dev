@@ -119,7 +119,7 @@ function allowDrop(event) {
 }
 
 function drag(event) {
-  // 드래그한 상푸의 이름을 데이터로 저장
+  // 드래그한 상품의 이름을 데이터로 저장
   event.dataTransfer.setData(
     "text",
     event.target.querySelector(".card-title").textContent
