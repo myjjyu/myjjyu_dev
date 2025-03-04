@@ -1,0 +1,45 @@
+/* FLOAT 속성 */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  background-color: rgb(245, 245, 183);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  
+  
+
+  .header {
+    background-color: rgb(248, 164, 164);
+    width: 100%;
+    height: 10%;
+    text-align: center;
+  }
+
+  .left_menu{
+    background-color: rgb(164, 248, 164);
+    width: 20%;
+    height: 80%;
+    float: left;  
+  }
+
+  .content {
+    background-color: rgb(164, 164, 248);
+    width: 80%;
+    height: 80%;
+    float: right;
+  }
+
+  .footer {
+    background-color: rgb(164, 248, 248);
+    width: 100%;
+    height: 10%;
+    /* float속성다음에는 무조건 clear 사용하기_float기능 제거?라고보면됨 */
+    clear: both; 
+  }
+}
