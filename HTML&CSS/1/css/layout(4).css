@@ -1,0 +1,60 @@
+.main-background {
+  width: 100%;
+  height: 500px;
+  background-image: url(../img/개발.png);
+  background-size: cover; /* 이미지 크기 조정 */
+  background-repeat: no-repeat; /* 이미지 반복 제거 */
+  background-position: center; /* 이미지 위치 조정 */
+  background-attachment: fixed; /* 이미지 고정 */
+}
+
+.main-title {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  padding-top: 150px;
+  margin-bottom: 40px;
+}
+
+.main-subtitle {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  background-color: rgb(125, 125, 125);
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+
+  /* 버튼위치 조정*/
+  position : absolute; /* 부모가 body */
+  left : 0;
+  right : 0; 
+  margin-left : auto;
+  margin-right : auto;
+  margin-top: 50px;
+}
+
+.box {
+  background-color: rgb(174, 174, 174);
+  width: 50%;
+  padding: 20px;
+  position: relative; /* 기준이 내 원래 위치요 */
+  top: -50px;
+  left: 25%;
+}
+
+.box-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+  margin-bottom: 10px;
+}
+li {
+  text-align: center;
+}
