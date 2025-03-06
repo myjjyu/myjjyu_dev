@@ -43,10 +43,12 @@
 .box {
   background-color: rgb(174, 174, 174);
   width: 50%;
+  max-width: 700px;
   padding: 20px;
   position: relative; /* 기준이 내 원래 위치요 */
   top: -50px;
   left: 25%;
+
 }
 
 .box-title {
