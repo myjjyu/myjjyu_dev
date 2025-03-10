@@ -1,0 +1,9 @@
+{
+  "powermode.presets": "magic",
+  "powermode.combo.counterEnabled": "hide",
+  "powermode.combo.timerEnabled": "hide",
+  "powermode.shake.enabled": true,
+  "powermode.explosions.customCss": {
+    
+  }
+}
