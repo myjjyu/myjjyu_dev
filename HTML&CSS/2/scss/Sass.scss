@@ -65,4 +65,14 @@ h3{
 .ani-navbar:hover {
   transform: translateX(0px); /* 마우스를 올리면 원래 위치로 이동 */
   text-align: center; /* 텍스트를 중앙 정렬 */
+    p{
+      animation-name: slide;
+      animation-duration: 1s;
+    }
+}
+
+@keyframes slide {
+  0% { transform: translateX(-250px) }
+  50% { transform: translateX(50px) skewX(-30deg)}
+  100% { transform: translateX(0px) }
 }
