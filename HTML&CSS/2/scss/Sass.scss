@@ -46,3 +46,23 @@ h2{
 h3{
   @include 폰트스타일(19px, 2px);
 }
+
+
+// 슬라이딩메뉴 만들기
+.ani-navbar {
+  width: 200px; /* 네비게이션바 너비 설정 */
+  background: black; 
+  color: white;
+  height: 100%; /* 화면 높이 전체를 차지하도록 설정 */
+  padding: 25px; 
+  position: fixed; /* 화면에 고정되도록 설정 */
+  z-index: 5; 
+  text-align: right; 
+  transition: all 1s; /* 모든 변화에 1초 동안 애니메이션 적용 */
+  transform: translateX(-150px); /* 기본적으로 왼쪽으로 150px 이동하여 숨김 */
+}
+
+.ani-navbar:hover {
+  transform: translateX(0px); /* 마우스를 올리면 원래 위치로 이동 */
+  text-align: center; /* 텍스트를 중앙 정렬 */
+}
