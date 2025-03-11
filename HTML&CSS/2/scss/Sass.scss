@@ -1,0 +1,48 @@
+// 다른파일 참조하기
+// @import "reset"; // reset.scss 파일을 참조한다
+@use "reset"; // reset.scss 파일을 참조한다
+
+// 공통된 속성을 변수로 선언하여 사용하기
+// %는 placeholder(플레이스홀더) 선택자라고 해서, 
+// 직접 CSS로 출력되지 않고 @extend로만 확장해서 사용할 수 있다
+%box {
+  width: 100px;
+  height: 100px;
+}
+
+.box1 {
+  @extend %box;
+  background-color: red;
+}
+
+.box2 {
+  @extend %box;
+  background-color: blue;
+}
+
+.box3 {
+  @extend %box;
+  background-color: green;
+}
+
+
+// @mixin 사용하기
+// @mixin은 재사용할 스타일을 선언할 때 사용한다
+// @mixin은 @include로 사용할 수 있다
+// 긴코드를 짧은 단어로 축약할때 사용한다
+
+// @mixin 문법의 $변수명: 값;은 선택적으로 사용할 수 있다
+// @mixin 문법의 @content는 믹스인을 사용할 때, 믹스인 내부에 코드를 넣어 사용할 수 있다
+@mixin 폰트스타일($구멍, $구멍2){
+  font-size: $구멍;
+  letter-spacing: $구멍2;
+}
+
+h2{
+  @include 폰트스타일(40px, 10px);
+  color: reset.$메인컬러;
+}
+
+h3{
+  @include 폰트스타일(19px, 2px);
+}
