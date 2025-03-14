@@ -19,8 +19,8 @@
 
 ## 🔄 진행 상태 
 - ✅ 완료: git, HTML, CSS 기초
-- 🔄 진행 중: JavaScript를 활용한 DOM 구조 학습
-- ➡️ 다음: React 기본 개념 학습 & JavaScript를 활용한 쇼핑몰 클론코딩 프로젝트
+- ✅ 진행 중: JavaScript를 활용한 DOM 구조 학습
+- ➡️ 진행: React 기본 개념 학습 & JavaScript를 활용한 웹사이트 클론코딩 프로젝트
 
 ## 📖 블로그
 개인 블로그에 공부 내용을 기록하고 있습니다 : [벨로그](https://velog.io/@jjyu_my)
